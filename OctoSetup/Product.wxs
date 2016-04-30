@@ -26,7 +26,7 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="OctoAwesome" FileSource=".">
           <Component Id="OctoCoreBinaries" Guid="2716CB1F-275B-4BE8-9625-64A3C1DFBC67">
-            <File Id="OctoClientEXE" Name="OctoClient.exe">
+            <File Id="OctoClientEXE" Name="OctoClient.exe" KeyPath="yes">
               <Shortcut Id="startmenuOctoAwesome" Directory="ProgramMenuFolder" Name="OctoAwesome" WorkingDirectory="INSTALLFOLDER" Icon="OctoClient.exe" IconIndex="0" Advertise="yes" />
               <Shortcut Id="desktopOctoAwesome" Directory="DesktopFolder" Name="OctoAwesome" WorkingDirectory="INSTALLFOLDER" Icon="OctoClient.exe" IconIndex="0" Advertise="yes" />
             </File>

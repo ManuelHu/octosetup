@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "OctoTestSetup", "OctoTestSetup\OctoTestSetup.wixproj", "{EFA501EB-7D86-446F-A479-DC4FF28FB728}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "OctoSetup", "OctoSetup\OctoSetup.wixproj", "{EFA501EB-7D86-446F-A479-DC4FF28FB728}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
