@@ -1,30 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="OctoTestSetup" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="7d63b3a7-ead7-4af2-9727-40f0ffb4813d">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+	<Product Id="9765f906-64a8-4932-b791-eaed36735f68" 
+           Name="OctoAwesome" 
+           Language="1033" 
+           Version="1.0.0.0" 
+           Manufacturer="OctoAwesome Community" 
+           UpgradeCode="7d63b3a7-ead7-4af2-9727-40f0ffb4813d">
+    <Package Id="*"
+             Description="The OctoAwesome Game"
+             Manufacturer="OctoAwesome Community"
+             InstallerVersion="200" 
+             Compressed="yes" 
+             InstallScope="perMachine" 
+             InstallPrivileges="elevated"
+             Keywords="Installer"/>
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+    <Media Id="1"
+           Cabinet="contents.cab"
+           EmbedCab="yes"
+           CompressionLevel="high" />
 
-		<Feature Id="ProductFeature" Title="OctoTestSetup" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
-	</Product>
+		<MajorUpgrade DowngradeErrorMessage="A newer version of OctoAwesome is already installed." />
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="OctoTestSetup" />
-			</Directory>
-		</Directory>
-	</Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="OctoAwesome">
+          <Component Id="OctoCoreBinaries" Guid="2716CB1F-275B-4BE8-9625-64A3C1DFBC67">
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoClient.exe">
+              <Shortcut Id="startmenuOctoAwesome" Directory="ProgramMenuFolder" Name="OctoAwesome" WorkingDirectory="INSTALLFOLDER" Icon="OctoClient.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="desktopOctoAwesome" Directory="DesktopFolder" Name="OctoAwesome" WorkingDirectory="INSTALLFOLDER" Icon="OctoClient.exe" IconIndex="0" Advertise="yes" />
+            </File>
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoClient.exe.config" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoAwesome.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoAwesome.Runtime.dll" />
+          </Component>
+          <Component Id="OctoBasicsExtension" Guid="1C8DB637-DAD5-4C72-9A22-BC97B5ACFE31">
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoAwesome.Basics.dll" />
+          </Component>
+          <Component Id="OctoDependencies" Guid="E5BAECAE-1A77-4F17-8386-4FA0E43F0302">
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\MonoGame.Framework.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\MonoGameUi.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.Direct2D1.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.Direct3D9.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.Direct3D11.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.DXGI.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.MediaFoundation.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.RawInput.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.XAudio2.dll" />
+            <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\SharpDX.XInput.dll" />
+          </Component>
+          <Directory Id="ContentFolder" Name="Content">
+            <Component Id="OctoCoreContent"  Guid="4FA91450-EC8F-49F9-95AF-6D3BA3ED7927">
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Content\Hud.xnb" />
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Content\simple.xnb" />
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Content\HeadlineFont.xnb" />
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Content\GameFont.xnb" />
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Content\BoldFont.xnb" />
+            </Component>
+          </Directory>
+          <Directory Id="GermanLangPack" Name="de">
+            <Component Id="OctoCoreGermanLangPack" Guid="D2F4D929-394B-4D0B-AD0B-6C7F26FFD9F3">
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\de\OctoClient.resources.dll" />
+            </Component>
+            <Component Id="OctoBasicsExtensionGermanLangPack" Guid="FB1819D8-4016-45FC-AE56-07FDC0534F19">
+              <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\de\OctoAwesome.Basics.resources.dll" />
+            </Component>
+          </Directory>
+          <Directory Id="AssetsDir" Name="Assets">
+            <Directory Id="OctoClientAssetsDir" Name="OctoAwesome.Client">
+              <Component Id="OctoCoreAssets" Guid="220C821A-129A-4D74-8621-3FE4F9EA7DEE">
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\background.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\background_new.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\background_notext.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\compass.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\octocross.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\panel.png" />
+                <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\sun.png" />
+              </Component>
+              <Directory Id="OctoCoreUIAssetsDir" Name="UI">
+                <Component Id="OctoCoreUIAssets" Guid="49C7F7FD-B50F-4A58-ACC8-CCD67219DAEE">
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_beige.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_beige_pressed.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_brown.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_brown_pressed.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_grey.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\UI\buttonLong_grey_pressed.png" />
+                </Component>
+              </Directory>
+              <Directory Id="OctoCoreCrewAssetsDir" Name="Crew">
+                <Component Id="OctoCoreCrewAssets" Guid="874B854D-CE70-429F-9074-E8634AC11BA3">
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\Crew\crew.xml" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\Crew\base.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Client\Crew\bobstriker.png" />
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="OctoBasicsAssetsDir" Name="OctoAwesome.Basics">
+              <Directory Id="OctoBasicsBlockAssetsDir" Name="Blocks">
+                <Component Id="OctoBasicsBlockAssets" Guid="2817A4C6-1DB8-484A-8B4D-74A70D18A676">
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\birch_wood_side.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\birch_wood_top.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\brick_grey.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\brick_red.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\cotton_blue.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\cotton_green.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\cotton_red.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\cotton_tan.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\dirt.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\dirt_grass.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\dirt_snow.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\grass_top.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\gravel.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\greystone.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\ice.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\leaves.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\leaves_orange.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\planks.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\planks_red.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\redstone.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\sand.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\snow.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\stone.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\water.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\wood_side.png" />
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Blocks\wood_top.png" />
+                </Component>
+              </Directory>
+              <Directory Id="OctoBasicsItemAssetsDir" Name="Items">
+                <Component Id="OctoBasicsItemAssets" Guid="136EAC19-B1B2-4282-9FFB-562A78FC0B6C">
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Items\pick_iron.png" />
+                </Component>
+              </Directory>
+              <Directory Id="OctoBasicsEntityAssetsDir" Name="Entities">
+                <Component Id="OctoBasicsEntityAssets" Guid="5D0B4586-91EE-4426-8D78-DDEBCDBA5ED9">
+                  <File Source="F:\Repos\octoawesome\OctoAwesome\bin\Debug\Assets\OctoAwesome.Basics\Entities\dog.png" />
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+          <!-- TODO: Debug & Doku -->
+        </Directory>
+      </Directory>
 
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Component Id="ProgramMenuFolder" Guid="A54524BE-BCF5-4912-8BDD-484C1874ABF8">
+          <RemoveFolder Id="ProgramMenuDir" On="uninstall"/>
+          <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+        </Component>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id="Complete" Title="OctoAwesome" Description="The complete package." Display="expand" Level="1" AllowAdvertise="no">
+      <Feature Id="OctoCore" Title="Core Excetutables" Description="Files that are needed to run." Level="1" AllowAdvertise="no" Absent="disallow">
+        <ComponentRef Id="OctoCoreBinaries" />
+        <ComponentRef Id="OctoDependencies" />
+        <ComponentRef Id="OctoCoreContent" />
+        <ComponentRef Id="OctoCoreAssets" />
+        <ComponentRef Id="OctoCoreUIAssets" />
+        <ComponentRef Id="OctoCoreCrewAssets" />
+        <ComponentRef Id="OctoCoreGermanLangPack" />
+        <ComponentRef Id="ProgramMenuFolder" />
+      </Feature>
+
+      <Feature Id="OctoBasics" Title="Basics Extension" Description="Some basic Blocks etc." Level="1" AllowAdvertise="no" Absent="disallow">
+        <ComponentRef Id="OctoBasicsExtension" />
+        <ComponentRef Id="OctoBasicsExtensionGermanLangPack" />
+        <ComponentRef Id="OctoBasicsBlockAssets" />
+        <ComponentRef Id="OctoBasicsItemAssets" />
+        <ComponentRef Id="OctoBasicsEntityAssets" />
+      </Feature>
+    </Feature>
+
+    <UI>
+      <Property Id="DefaultUIFont">DlgFont14</Property>
+
+      <Dialog Id="InstallDlg" Width="708" Height="400" Title="[ProductName] [Setup]">
+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="708" Height="400" TabSkip="no" Text="bannrbmp" />
+        <Control Id="Install" Type="PushButton" X="254" Y="160" Width="200" Height="30" Default="yes" Text="Install" ElevationShield="yes">
+          <Publish Event="EndDialog" Value="Return" />
+        </Control>
+        <Control Id="Cancel" Type="PushButton" X="254" Y="210" Width="200" Height="30" Default="yes" Text="Cancel" Cancel="yes">
+          <Publish Event="EndDialog" Value="Exit">1</Publish>
+        </Control>
+      </Dialog>
+
+      <TextStyle Id="DlgFont14" FaceName="Tahoma" Size="14" />
+
+      <InstallUISequence>
+        <Show Dialog="InstallDlg" After="CostFinalize" />
+      </InstallUISequence>
+      <Binary Id="bannrbmp" SourceFile="background.bmp" />
+    </UI>
+
+    <Icon Id="OctoClient.exe" SourceFile="F:\Repos\octoawesome\OctoAwesome\bin\Debug\OctoClient.exe" />
+  </Product>
 </Wix>
